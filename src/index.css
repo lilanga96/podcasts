@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.card-image{
+  width: 250px;
+  height: 250px;
+}
+
+li {
+  list-style: none;
+}
