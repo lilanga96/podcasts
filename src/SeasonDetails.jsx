@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import H5AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import supabase from './Components/Supabase';
 
 const SeasonDetails = () => {
   const [season, setSeason] = useState(null);
   const { id, seasonNumber } = useParams();
+  const [favorites, setFavorites] = useState({})
 
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
@@ -22,6 +24,12 @@ const SeasonDetails = () => {
   
   if (!season) {
     return <div>Loading...</div>;
+  }
+
+  async function createFavorites(){
+    await supabase
+    .from('favorites')
+    .insert({title: episode.title, episode: episode.episode, file: episode.file})
   }
 
   return (
