@@ -1,5 +1,6 @@
 import React from 'react'
-import supabase from './Components/Supabase'
+import { Link } from 'react-router-dom'
+
 
 function HomePage({ token, data }) {
 
@@ -10,12 +11,12 @@ function HomePage({ token, data }) {
     <div>  
         Welcome,{token.user && token.user.user_metadata.full_name}
         { <div className="container">
-      {data.map(movie => (
-        <div className='cards-container' key={movie.id}>
+      {data.map(show => (
+        <div className='cards-container' key={show.id}>
           <li>
-            <img className='card-image' src={movie.image} alt={movie.title} />
-            <div className='card-title'>{movie.title}</div>
-            <div className='card-title'>Seasons: {movie.seasons}</div>
+            <Link to = {'/show-details/'+ show.id}><img className='card-image' src={show.image} alt={show.title} /></Link>
+            <div className='card-title'>{show.title}</div>
+            <div className='card-title'>Seasons: {show.seasons}</div>
           </li>
         </div>
       ))}
