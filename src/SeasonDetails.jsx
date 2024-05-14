@@ -3,11 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import H5AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import supabase from './Components/Supabase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const SeasonDetails = () => {
   const [season, setSeason] = useState(null);
   const { id, seasonNumber } = useParams();
-  const [favorites, setFavorites] = useState({})
+  const [favorites, setFavorites] = useState({});
 
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
@@ -21,15 +23,26 @@ const SeasonDetails = () => {
       });
   }, [id, seasonNumber]);
 
-  
+  const toggleFavorite = (episodeTitle) => {
+    setFavorites(prevFavorites => ({
+      ...prevFavorites,
+      [episodeTitle]: !prevFavorites[episodeTitle]
+    }));
+  };
+
+  const createFavorites = async (episode) => {
+    await supabase
+      .from('Favorites')
+      .insert({ title: episode.title, episode: episode.episode, file: episode.file });
+  };
+
+  const handleHeartClick = (episode) => {
+    createFavorites(episode);
+    toggleFavorite(episode.title);
+  };
+
   if (!season) {
     return <div>Loading...</div>;
-  }
-
-  async function createFavorites(){
-    await supabase
-    .from('favorites')
-    .insert({title: episode.title, episode: episode.episode, file: episode.file})
   }
 
   return (
@@ -40,7 +53,10 @@ const SeasonDetails = () => {
           <div className='episode-card' key={episode.title}>
             <h3>{episode.title}</h3>
             <p>Episode: {episode.episode}</p>
-            <H5AudioPlayer  autoPlay={false} src={episode.file} onPlay={(e) => console.log('Audio is playing')} />
+            <H5AudioPlayer autoPlay={false} src={episode.file} onPlay={(e) => console.log('Audio is playing')} />
+            <button onClick={() => handleHeartClick(episode)}>
+              <FontAwesomeIcon icon={faHeart} style={{ color: favorites[episode.title] ? 'red' : 'gray' }} />
+            </button>
           </div>
         ))}
       </div>

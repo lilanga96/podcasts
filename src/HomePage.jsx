@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function HomePage({ token, data }) {
 
     
-   
+
    
   return (
     <div>  
