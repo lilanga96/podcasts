@@ -5,11 +5,14 @@ import 'react-h5-audio-player/lib/styles.css';
 import supabase from './Components/Supabase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const SeasonDetails = () => {
   const [season, setSeason] = useState(null);
   const { id, seasonNumber } = useParams();
   const [favorites, setFavorites] = useState({});
+  
+  let navigate = useNavigate()
 
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
@@ -60,9 +63,8 @@ const SeasonDetails = () => {
           </div>
         ))}
       </div>
-      <Link to={`/show/${id}`}>
-        <button className='button'>Back to Show Details</button>
-      </Link>
+    
+        <button onClick={() => navigate("/")} className='button'>Back to Show Details</button>
     </div>
   );
 };

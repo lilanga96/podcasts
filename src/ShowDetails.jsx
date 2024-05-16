@@ -2,12 +2,15 @@ import React from 'react'
 import { fetchShowById } from "./API"
 import { Link, useParams } from "react-router-dom"
 import { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 
 function ShowDetails() {
 
     const [show, setShow] = useState([])
+
+    let navigate = useNavigate()
 
 
     const { id } = useParams();
@@ -47,6 +50,7 @@ function ShowDetails() {
         </div>
        })}
         </div>
+        <button onClick={()=>navigate('/')}>BACK TO HOMEPAGE</button>
         </div>
   )
 }

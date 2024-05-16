@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function HomePage({ token, data }) {
   const [sortBy, setSortBy] = useState('asc');
 
-  // Function to sort shows by title
   const sortShowsByTitle = () => {
     const sortedData = [...data];
     sortedData.sort((a, b) => {

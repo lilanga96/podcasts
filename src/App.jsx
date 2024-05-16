@@ -56,6 +56,7 @@ useEffect(() => {
       <Route path="/sign-up" element = {<SignUp />} />
       
       <Route path="/show-details/:id" element = {<ShowDetails />} />
+      <Route path="/show-details" element = {<ShowDetails />} />
 
       <Route path='/show/:id/season/:seasonNumber' element = {<SeasonDetails />} />
       <Route path="/favorites" element = {<Favorites />} />

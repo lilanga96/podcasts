@@ -3,9 +3,12 @@ import { useState, useEffect } from 'react'
 import supabase from './Supabase'
 import H5AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { useNavigate } from 'react-router-dom';
 
 function Favorites() {
     const [favors, setFavors] = useState([])
+
+    let navigate = useNavigate()
 
     useEffect(() =>{
         fetchFavorites()
@@ -31,7 +34,11 @@ function Favorites() {
         })}
         </div>
 
+        <button onClick={() => navigate('/')}>BACK TO HOMEPAGE</button>
+
         </div>
+
+
   )
 }
 
