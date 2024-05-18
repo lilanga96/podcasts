@@ -44,12 +44,12 @@ function Favorites({token}) {
         })}
         </div>
 
-        <button onClick={() => navigate('/')}>BACK TO HOMEPAGE</button>
+        <button className='btn2' onClick={() => navigate('/')}>BACK TO HOMEPAGE</button>
 </>
          ) : (
             <div className="modal-container">
             <div className="modal-content">
-              <p>Please sign in to continue.</p>
+              <p className='modal-paaragraph'>Please sign in to continue.</p>
               <button className='modal-button btn3' onClick={handleSignIn}>Sign In</button>
               <button className='modal-button btn4' onClick={handleCancel}>Cancel</button>
             </div>

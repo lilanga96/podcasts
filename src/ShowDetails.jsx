@@ -43,28 +43,29 @@ function ShowDetails({token}) {
   return (
     <div>
       {token ? (
-    <>
+       <>
       <h2 className='show-title'>{show.title}</h2>
        <p className='description'>{show.description}</p>
        <hr></hr>
-       <div className='container'>
+       <div className='container-show'>
        {show.seasons && show.seasons.map(season =>{
         return <div key={season.season}>
-            <div className='card-container season-container'>
-            <Link to = {`/season-details/${season.season}`}> <img className='card-image' src = {season.image} /></Link>
-            <small className='card-title'>{season.title}</small>
-            <Link to={`/show/${id}/season/${season.season}`}><button className='btn1'>View Episodes</button></Link>
+            <div className='cards-container-show'>
+            <Link to = {`/season-details/${season.season}`}> <img className='card-image-show' src = {season.image} /></Link>
+            <small className='card-title-show card-title'>{season.title}</small>
+            <Link to={`/show/${id}/season/${season.season}`}><button className='btn1 button'>View Episodes</button></Link> 
+           
          </div>
         
         </div>
        })}
         </div>
-         <button className='btn3 homeBtn' onClick={()=>navigate('/')}>BACK TO HOMEPAGE</button>
+         <button className='btn2' onClick={()=>navigate('/')}>BACK TO HOMEPAGE</button>
         </>
       ) : ( 
         <div className="modal-container">
           <div className="modal-content">
-            <p>Please sign in to continue.</p>
+            <p className='modal-paaragraph'>Please sign in to continue.</p>
             <button className='modal-button btn3' onClick={handleSignIn}>Sign In</button>
             <button className='modal-button btn4' onClick={handleCancel}>Cancel</button>
           </div>

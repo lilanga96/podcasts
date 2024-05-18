@@ -40,11 +40,13 @@ function HomePage({ token, data }) {
   };
 
   return (
-    <div>  <div className='search-container'>
+    <div>  
+      
+    <div className='search-container'>
     <input id='searchInput' type="text" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} />
     </div>
     { isLoading ? (
-        <div>Loading...</div>
+        <div className='loading'>Loading...</div>
     ) : ( 
         <div className='container'>
             {searchQuery !== '' && filteredData.length === 0 ? (

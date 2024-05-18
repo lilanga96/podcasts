@@ -1,12 +1,68 @@
 body{
   background-color: black;
 }
-.container {
+/* .container{
  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   position: relative;
+}  */
+ 
+ /* .container-show{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}  */
+.container-show {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
+
+.cards-container-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 200px;
+  height: 300px;
+}
+
+.card-title-show {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-image-show {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+.button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+/* .container-show{
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}  */
+
+
 
 .card-title{
   color: white;
@@ -94,12 +150,13 @@ li {
 .audio-card{
   width: 100px;
 }
-.container {
+ .container{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
+  gap: 20px;
+} 
 
 .show-title {
   color: white;
@@ -144,6 +201,7 @@ p{
   color: white;
   outline: none;
   border-color: red;
+  border-radius: 5px;
 }
 .btn1:hover{
   background-color: red;
@@ -156,6 +214,7 @@ p{
   color: white;
   outline: none;
   border-color: red ;
+  border-radius: 5px;
 }
 
 .btn3{
@@ -163,6 +222,7 @@ p{
   color: white;
   outline: none;
   border-color: red ;
+  border-radius: 5px;
 }
 
 .btn3:hover{
@@ -184,6 +244,7 @@ p{
   color: white;
   outline: none;
   border-color: red ;
+  border-radius: 5px;
 }
 
 .btn2:hover{
@@ -236,18 +297,25 @@ p{
 .seasonTitle {
   color: white;
 }
+.navbar-toggler-icon{
+  background-color: red;
+}
 
-.season-container{
-  margin-bottom: 15px;
+
+.modal-paaragraph{
+  color: black;
 }
 
 .homeBtn{
   margin-bottom: 10px;
 }
+.loading{
+  color: red;
+}
 
 @media (max-width: 575.98px) {
 
-  .container {
+  .container{
     display: grid;
      grid-template-columns: repeat(2, 160px);
     position: relative;
@@ -255,6 +323,12 @@ p{
   }
   .form-div{
     width: 300px;
+  }
+  .container-show{
+    display: grid;
+     grid-template-columns: repeat(2, 160px);
+    position: relative;
+    right: 10px;
   }
   
    
@@ -289,7 +363,7 @@ p{
 }
 
 @media (min-width: 576px) and (max-width: 800px) {
-  .container {
+  .container{
     display: grid;
      grid-template-columns: repeat(2, 200px);
     position: relative;
@@ -313,7 +387,7 @@ p{
 
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .container {
+  .container{
     display: grid;
      grid-template-columns: repeat(3, 190px);
     position: relative;
@@ -329,8 +403,18 @@ p{
    }
    .episode-cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 260px);
+    grid-template-columns: repeat(2, 250px);
     grid-gap: 10px;
   }
   
+}
+
+@media (min-width: 990px) and (max-width: 1278px) {
+
+  .episode-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-gap: 10px;
+  }
+
 }
