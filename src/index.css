@@ -1,19 +1,6 @@
 body{
   background-color: black;
 }
-/* .container{
- display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  position: relative;
-}  */
- 
- /* .container-show{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  position: relative;
-}  */
 .container-show {
   display: flex;
   flex-wrap: wrap;
@@ -53,16 +40,6 @@ body{
   cursor: pointer;
   text-align: center;
 }
-
-
-/* .container-show{
-  display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-}  */
-
-
 
 .card-title{
   color: white;
