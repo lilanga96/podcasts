@@ -42,17 +42,27 @@ function SignUp() {
         }
     }
   return (
-    <div>
-       <h1>SignUp</h1>
-       <form onSubmit={handleSubmit}>
-        <input type='text' value={email} placeholder='Email' onChange={handleEmail} />
-        <input type='password' placeholder='Password' onChange={handlePassword} />
-        <input type='text' value={fullName} placeholder='Full name' onChange={handleFullName} />
-        <button type='submit'>Submit</button>
-        
-       </form>
+    <div className='form-div'>
+       <h1>Sign up</h1>
+<form onSubmit={handleSubmit} style={{ width: '400px' , height: '400px'}}>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" value={email} onChange={handleEmail} aria-describedby="emailHelp"/>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1"  class="form-label">Password</label>
+    <input type="password" class="form-control"  onChange={handlePassword} id="exampleInputPassword1" />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputFullName" class="form-label">Full name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" value={fullName} onChange={handleFullName} aria-describedby="emailHelp"/>
 
-       <p>Already have an account? <Link to ='/sign-in'>SIGN IN</Link></p>
+  </div>
+  <button type="submit" class="btn btn-primary btn2">Submit</button>
+</form>
+
+       <p>Already have an account? <Link to ='/sign-in' style={{ color: 'white'}}>SIGN IN</Link></p>
     </div>
   )
 }

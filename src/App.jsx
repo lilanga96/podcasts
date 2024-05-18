@@ -9,7 +9,7 @@ import Navigation from "./Components/Navigation"
 import SeasonDetails from "./SeasonDetails"
 import ShowDetails from "./ShowDetails"
 import Favorites from "./Components/Favorites"
-import Search from "./Components/Search"
+
 
 
 
@@ -48,18 +48,16 @@ useEffect(() => {
   return (
     <>
     <Navigation />
-     <Search data = {data} />
      <Routes>
       <Route path="/" element = {<HomePage token = {token}  data = {data}/>} />
       
       <Route path="/sign-in" element = {<SignIn  setToken = {setToken}/>} />
       <Route path="/sign-up" element = {<SignUp />} />
       
-      <Route path="/show-details/:id" element = {<ShowDetails />} />
-      <Route path="/show-details" element = {<ShowDetails />} />
+      <Route path="/show-details/:id" element = {<ShowDetails   token = {token}/>} />
 
       <Route path='/show/:id/season/:seasonNumber' element = {<SeasonDetails />} />
-      <Route path="/favorites" element = {<Favorites />} />
+      <Route path="/favorites" element = {<Favorites  token = {token}/>} />  
       
       
   

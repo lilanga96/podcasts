@@ -45,12 +45,12 @@ const SeasonDetails = () => {
   };
 
   if (!season) {
-    return <div>Loading...</div>;
+    return <div className='loading'>Loading...</div>;
   }
 
   return (
     <div>
-      <h2>{season.title}</h2>
+      <h2 className='seasonTitle'>{season.title}</h2>
       <div className='episode-cards-container'>
         {season.episodes.map((episode) => (
           <div className='episode-card' key={episode.title}>
@@ -64,7 +64,7 @@ const SeasonDetails = () => {
         ))}
       </div>
     
-        <button onClick={() => navigate("/")} className='button'>Back to Show Details</button>
+        <button onClick={() => navigate("/")} className='button btn2'>Back to Show Details</button>
     </div>
   );
 };

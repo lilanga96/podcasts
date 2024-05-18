@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-function ShowDetails() {
+function ShowDetails({token}) {
 
     const [show, setShow] = useState([])
 
@@ -31,26 +31,47 @@ function ShowDetails() {
        }
      };
 
+     function handleCancel(){
+       navigate('/')
+     }
+
+     function handleSignIn(){
+      navigate('/sign-in')
+     }
+
 
   return (
     <div>
-       <h1>hello {id}</h1>
-       <h2>{show.title}</h2>
+      {token ? (
+    <>
+      <h2 className='show-title'>{show.title}</h2>
+       <p className='description'>{show.description}</p>
        <hr></hr>
-       {show.description}
        <div className='container'>
        {show.seasons && show.seasons.map(season =>{
         return <div key={season.season}>
-            <div className='card-container'>
+            <div className='card-container season-container'>
             <Link to = {`/season-details/${season.season}`}> <img className='card-image' src = {season.image} /></Link>
-            <h5 className='card-title'>{season.title}</h5>
-            <Link to={`/show/${id}/season/${season.season}`}><button>View Episodes</button></Link>
+            <small className='card-title'>{season.title}</small>
+            <Link to={`/show/${id}/season/${season.season}`}><button className='btn1'>View Episodes</button></Link>
          </div>
-    
+        
         </div>
        })}
         </div>
-        <button onClick={()=>navigate('/')}>BACK TO HOMEPAGE</button>
+         <button className='btn3 homeBtn' onClick={()=>navigate('/')}>BACK TO HOMEPAGE</button>
+        </>
+      ) : ( 
+        <div className="modal-container">
+          <div className="modal-content">
+            <p>Please sign in to continue.</p>
+            <button className='modal-button btn3' onClick={handleSignIn}>Sign In</button>
+            <button className='modal-button btn4' onClick={handleCancel}>Cancel</button>
+          </div>
+        </div>
+  
+        )
+      }
         </div>
   )
 }

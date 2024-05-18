@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function HomePage({ token, data }) {
   const [sortBy, setSortBy] = useState('asc');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+       if (data && data.length > 0) {
+          setIsLoading(false);
+       }
+   }, [data]);
+
+   const handleSearchChange = (e) => {
+       const value = e.target.value;
+      setSearchQuery(value);
+
+      if (data) {
+          const filtered = data.filter(item =>
+              item.title.toLowerCase().includes(value.toLowerCase())
+          );
+          setFilteredData(filtered);
+      }
+  };
+
+ 
 
   const sortShowsByTitle = () => {
     const sortedData = [...data];
@@ -17,14 +40,32 @@ function HomePage({ token, data }) {
   };
 
   return (
-    <div>  
-      <div>
-        Welcome, {token.user && token.user.user_metadata.full_name}
-      </div>
-      <div>
+    <div>  <div className='search-container'>
+    <input id='searchInput' type="text" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} />
+    </div>
+    { isLoading ? (
+        <div>Loading...</div>
+    ) : ( 
+        <div className='container'>
+            {searchQuery !== '' && filteredData.length === 0 ? (
+                <div>No results found.</div>
+            ) : (
+                filteredData.map(item => (
+                    <div key={item.id} className='cards-container'>
+                        <Link to={'/show-details/' + item.id}><img className='card-image' src={item.image} alt={item.title} /></Link>
+                        <div className='card-title'> {item.title}</div>
+                        <div className='card-image'> seasons: {item.seasons}</div>
+                    </div>
+                ))
+            )}
+        </div>
+    )}
+      <div className='search-container'>
+      <div className='sortingBtns'>
       
-        <button onClick={() => setSortBy('asc')}>Sort A-Z</button>
-        <button onClick={() => setSortBy('desc')}>Sort Z-A</button>
+        <button className='btn1' onClick={() => setSortBy('asc')}>Sort A-Z</button>
+        <button className='btn2' onClick={() => setSortBy('desc')}>Sort Z-A</button>
+      </div>
       </div>
       <div className="container">
     
@@ -34,8 +75,6 @@ function HomePage({ token, data }) {
               <Link to={`/show-details/${show.id}`}>
                 <img className='card-image' src={show.image} alt={show.title} />
               </Link>
-              <div className='card-title'>{show.title}</div>
-              <div className='card-title'>Seasons: {show.seasons}</div>
             </li>
           </div>
         ))}

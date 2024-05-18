@@ -38,15 +38,23 @@ function SignIn({ setToken }) {
     
     }
   return (
-    <div>
-        <h1>Sign in to your account</h1>
-        <form onSubmit={handleLogin}>
-            <input type='email' value={email} onChange={handleEmailLogin} />
-            <input type='password' placeholder='Password' onChange={handlePasswordLogin} />
-            <button type='submit'>Submit</button>
-        </form>
+    <div className='form-div' >
+        <h1>LOGIN</h1>
+ <form onSubmit={handleLogin} style={{ width: '400px' , height: '400px'}} >
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" value={email} onChange={handleEmailLogin} aria-describedby="emailHelp"/>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1"  class="form-label">Password</label>
+    <input type="password" class="form-control"  onChange={handlePasswordLogin} id="exampleInputPassword1" />
+  </div>
+  <button type="submit" class="btn btn-primary btn2">Submit</button>
+</form>
+        
 
-        <p>Don't have an account? <Link to = '/sign-up'>SIGN UP</Link></p>
+        <p>Don't have an account? <Link to = '/sign-up' style={{ color: 'white'}}>SIGN UP</Link></p>
 
     </div>
   )

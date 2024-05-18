@@ -5,7 +5,7 @@ import H5AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 
-function Favorites() {
+function Favorites({token}) {
     const [favors, setFavors] = useState([])
 
     let navigate = useNavigate()
@@ -21,8 +21,18 @@ function Favorites() {
         setFavors(data)
     }
 
+    function handleCancel(){
+        navigate('/')
+      }
+ 
+      function handleSignIn(){
+       navigate('/sign-in')
+      }
+
   return (
     <div>
+         {token ? (
+    <>
         <h1> Your favorites</h1>
         <div className='episode-cards-container'>
         { favors && favors.map(item =>{
@@ -35,7 +45,17 @@ function Favorites() {
         </div>
 
         <button onClick={() => navigate('/')}>BACK TO HOMEPAGE</button>
-
+</>
+         ) : (
+            <div className="modal-container">
+            <div className="modal-content">
+              <p>Please sign in to continue.</p>
+              <button className='modal-button btn3' onClick={handleSignIn}>Sign In</button>
+              <button className='modal-button btn4' onClick={handleCancel}>Cancel</button>
+            </div>
+          </div>
+         )
+    }
         </div>
 
 
