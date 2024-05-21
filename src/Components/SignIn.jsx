@@ -40,7 +40,7 @@ function SignIn({ setToken }) {
   return (
     <div className='form-div' >
         <h1>LOGIN</h1>
- <form onSubmit={handleLogin} style={{ width: '400px' , height: '400px'}} >
+ <form onSubmit={handleLogin} >
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" value={email} onChange={handleEmailLogin} aria-describedby="emailHelp"/>

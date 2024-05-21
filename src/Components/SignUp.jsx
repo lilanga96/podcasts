@@ -44,7 +44,7 @@ function SignUp() {
   return (
     <div className='form-div'>
        <h1>Sign up</h1>
-<form onSubmit={handleSubmit} style={{ width: '400px' , height: '400px'}}>
+<form onSubmit={handleSubmit}>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" value={email} onChange={handleEmail} aria-describedby="emailHelp"/>
@@ -62,7 +62,7 @@ function SignUp() {
   <button type="submit" class="btn btn-primary btn2">Submit</button>
 </form>
 
-       <p>Already have an account? <Link to ='/sign-in' style={{ color: 'white'}}>SIGN IN</Link></p>
+       <p className='signUp-paragraph'>Already have an account? <Link to ='/sign-in' style={{ color: 'white'}}>SIGN IN</Link></p>
     </div>
   )
 }

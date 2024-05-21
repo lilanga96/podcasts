@@ -209,6 +209,11 @@ p{
   border-color: red;
 }
 
+form{
+  width: 400px;
+  height: 400px;
+}
+
 .btn4{
   background-color: transparent;
   color: black;
@@ -290,7 +295,7 @@ p{
   color: red;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 600px) {
 
   .container{
     display: grid;
@@ -299,8 +304,21 @@ p{
     right: 10px;
   }
   .form-div{
-    width: 300px;
+    width: 270px;
+    position: relative;
+    left: 3rem;
   }
+
+  form{
+    width: 300px;
+    height: 300px;
+  }
+  .signUp-paragraph{
+    position: relative;
+    top: 1rem;
+  }
+
+ 
   .container-show{
     display: grid;
      grid-template-columns: repeat(2, 160px);
